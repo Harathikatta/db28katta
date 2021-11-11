@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  - var results = [{"types":"anarkali", "fabric": "velvet","cost":200},{"types":"skirt", "fabric": "crape","cost":100},{"types":"jeans", "fabric": "denim","cost":150}]
+  - let dress=results
   div(class="container-fuild")
     div(class="row")
       each result,index in results
