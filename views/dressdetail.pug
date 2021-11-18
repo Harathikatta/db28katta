@@ -1,20 +1,38 @@
-extends layout
-block content
- h1= title
- - let dressid = toShow._id
- - let dress_type = toShow.types
- - let dressfabric = toShow.fabric
- - let dresscost = toShow.cost
- div
- div.row
- div(class='dressAttr mr-3') dress ID is:
- div #{dressid}
- div.row
- div(class='dressAttr mr-3') dress Type is:
- div #{dress_type}
- div.row
- div(class='dressAttr mr-3') dress fabric is:
- div #{dressfabric}
- div.row
- div(class='dressAttr mr-3') dress Cost is:
- div #{dresscost}
+extends layout 
+
+
+ 
+block content 
+  h1= title 
+ 
+  - let dressid = toShow._id 
+  - let types = toShow.types 
+  - let dressfabric  = toShow.fabric 
+  - let dresscost  = toShow.cost 
+  div 
+    div.row 
+      div(class='dressAttr mr-3') dress ID is: 
+      div #{dressid} 
+    div.row 
+      div(class='dressAttr mr-3') dress Type is: 
+      div #{types} 
+    div.row 
+      div(class='dressAttr mr-3') dress fabric is: 
+      div #{dressfabric} 
+    div.row 
+      div(class='dressAttr mr-3') dress Cost is: 
+      div #{dresscost} 
+
+    button(class="btn btn-danger m-2" onclick="gobackOnid()") goback 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+
+  script. 
+    function cancel() { 
+      // Go back to the home page for the dress collection 
+      window.location.href='/dress'
+    }
+
+  script. 
+   function gobackOnid() { 
+     window.location.href='/dress'
+   }

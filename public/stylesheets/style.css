@@ -8,6 +8,29 @@ a {
 }
 
 .dressAttr {
-  background-color: aquamarine;
+  background-color: aquamarine; 
+  font: 300;
+  height: 50px;
+  font-size: 20px;
   width: 120px;
  }
+
+ h1{
+  margin-left: -10px;
+  text-shadow: 2px 2px #0077ff;
+  font: bold;
+  width: 500px;
+  color: violet;
+}
+.dress{
+  width: 500px; 
+  font: 300;
+  height: 50px;
+  font-size: 20px;
+  background-color: red ;
+
+}
+div{
+  align-items: center;
+}
+

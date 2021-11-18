@@ -22,9 +22,18 @@ block content
     div.form-group 
         label.dressAttr(for='cost') dress cost 
         input#cost(type='number', name='cost', value= dresscost ) 
-    input(type="submit") 
+     
+
+    button(class="btn btn-danger m-2" onclick="updateOnid()") update 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+
+  script. 
+    function cancel() { 
+      // Go back to the home page for the dress collection 
+      window.location.href='/dresss'
  
   script. 
+   function updateOnid() { 
     document.forms['dressForm'].addEventListener('submit', (event) => { 
       event.preventDefault(); 
       // TODO do something here to show user that form is being submitted 
@@ -41,4 +50,4 @@ block content
         alert("Update failed " + error ) 
       }); 
     }); 
-    
+   }

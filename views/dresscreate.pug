@@ -1,34 +1,47 @@
-extends layout
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  form(id='dressForm', action="/resource/resource/dresss", method="POST") 
+    div.form-group 
+        label.dressAttr(for='types') dress type 
+        input#dress_type(type='text', name='types') 
+    div.form-group 
+        label.dressAttr(for='fabric') dress size 
+        input#size(type='text', name='fabric') 
+    div.form-group 
+        label.dressAttr(for='cost') dress cost 
+        input#cost(type='number', name='cost') 
+     
 
-block content
+    button(class="btn btn-danger m-2" onclick="createOnid()") create 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
 
-  h1= title
-   form(id='dressForm', action="/resource/resource/dresss", method="POST")
-    div.form-group
-        label.dressAttr(for='dress_type') dress type
-        input#dress_type(type='text', name='dress_type')
-    div.form-group
-        label.dressAttr(for='fabric') dress fabric
-        input#size(type='text', name='fabric')
-    div.form-group
-        label.dressAttr(for='cost') dress cost
-        input#cost(type='number', name='cost')
-    input(type="submit")
+    script. 
+      function cancel() { 
+      // Go back to the home page for the dress collection 
+        window.location.href='/dresss' 
+      } 
 
-    script.
-        document.forms['dressForm'].addEventListener('submit', (event) => {
-            event.preventDefault();
-            // TODO do something here to show user that form is being submitted
-            fetch(event.target.action, {
-                method: 'POST',
-                body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-                }).then((resp) => {
-                    return resp.text(); // or resp.text() or whatever the server sends
-                }).then((body) => {
-                alert("Save succeded")
-                 // TODO handle body
-                }).catch((error) => {
-             // TODO handle error
-            alert("Save failed " + error )
-        });
-     });
+
+  script. 
+   function createOnid() { 
+    document.forms['dressForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'POST', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.text(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Save succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Save failed " + error ) 
+      }); 
+    }); 
+
+   }
