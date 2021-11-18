@@ -1,0 +1,44 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let dressid = toShow._id 
+  - let dress_type = toShow.types 
+  - let dresssize = toShow.fabric 
+  - let dresscost = toShow.cost 
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{dressid} 
+  - let actionid = "/resource/resource/dresss/" + dressid 
+  form(id='dressForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.dressAttr(for='types') dress type 
+        input#dress_type(type='text', name='types', value= dress_type ) 
+    div.form-group 
+        label.dressAttr(for='fabric') dress size 
+        input#size(type='text', name='fabric', value= dresssize ) 
+    div.form-group 
+        label.dressAttr(for='cost') dress cost 
+        input#cost(type='number', name='cost', value= dresscost ) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['dressForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.text(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 
+    

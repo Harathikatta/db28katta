@@ -4,5 +4,4 @@ const dressSchema = mongoose.Schema({
     fabric: String,
 cost: Number
 })
-module.exports = mongoose.model("dress",
-dressSchema)
+module.exports = mongoose.model("dress",dressSchema)
